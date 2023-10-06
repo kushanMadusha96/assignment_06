@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>item</title>
+    <link rel="icon" type="image/x-icon" href="assets/logo.png">
+    <meta name="keyword" content="html">
+    <meta name="descripotion" content="about my portfolio">
+    <meta name="author" content="il=jse" >
+    <meta http-equiv="refresh" content="100"/>
+    <meta name="viewport" content="width=device-width",initial-scale="1"/>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+
+    <style>
+
+        header {
+            position: sticky;
+            top: 0;
+        }
+
+        /*navbar*/
+        nav {
+            position: relative;
+            border-bottom: 1px solid #E9B824;
+            z-index: 9999;
+        }
+        .nav-link {
+            font-style: italic;
+        }
+        #btn-search {
+            border: 1px solid #E9B824;
+            color: #E9B824;
+        }
+        #btn-search:hover {
+            background-color: #E9B824;
+            color: white;
+        }
+        #search-input {
+            border: 1px solid #E9B824;
+        }
+
+        /*main > select details inputs*/
+        #select-order-detail {
+            border: 1px solid #E9B824;
+            margin: 3px 10px ;
+            padding: 0 0 50px 0;
+            position: sticky;
+            top: 85px;
+            background-color: white;
+
+        }
+
+        #title {
+            background-color: #E9B824;
+            height: 50px;
+            position: relative;
+            margin-bottom: 10px;
+        }
+        p {
+            position: absolute;
+            right: 0;
+            left: 0;
+            margin: auto;
+            top: 3px;
+        }
+        form>div>div>div>input {
+            margin-bottom: 10px;
+        }
+        label {
+            font-weight: bold;
+        }
+
+        /*add-remove-btns*/
+        #add-remove-btns {
+            position: absolute;
+            right: 20px;
+        }
+        #table {
+            margin: 20px 10px 0 10px;
+            border: 1px solid #E9B824;
+        }
+        #shop-name {
+            width: fit-content;
+            height: fit-content;
+            margin: -1px 10px 0 -10px;
+        }
+        #shop-name>span {
+            font-size: 25px;
+            color: #E9B824;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        /*total label*/
+        #total {
+            position: absolute;
+            right: 5vw;
+            margin-top: 15px;
+        }
+        #btn-order {
+            position: absolute;
+            right: 200px;
+            margin-top: 10px;
+            padding-bottom: 10px;
+        }
+        #btn-order>button:hover {
+            color: #E9B824;
+            background-color: white;
+            border: 1px solid #E9B824;
+        }
+
+    </style>
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="assets/logo.png" alt="Logo" width="50" class="d-inline-block align-text-top">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"id="shop-name">
+                        <span >GoodFood</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.html">Item</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="customer.html">Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="place_order.html">Place Order</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="order_detail.html">Order Details</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search-input">
+                    <button class="btn btn-outline-success" type="submit" id="btn-search">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <section id="select-order-detail">
+        <div class="text-center" id="title">
+            <p class="fs-4">Select Order Details</p>
+        </div>
+        <div class="container">
+            <form>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="customer-id">customer id :</label>
+                            <input type="text" class="form-control btn btn-light" id="customer-id" placeholder="C001" class="input">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="order-id ">order id :</label>
+                            <input type="text" class="form-control btn btn-light" id="order-id " placeholder="O001" class="input">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="date">date :</label>
+                            <input type="text" class="form-control btn btn-light" id="date" placeholder="2023/08/23" class="input">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="item-id">item id :</label>
+                            <input type="text" class="form-control btn btn-light" id="item-id" placeholder="I008" class="input">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="item-name">item name :</label>
+                            <input type="text" class="form-control btn btn-light" id="item-name" placeholder="rice" class="input">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="price">price :</label>
+                            <input type="text" class="form-control btn btn-light" id="price" placeholder="200.00" class="input">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="qty-on-hand">qty on hand :</label>
+                            <input type="text" class="form-control btn btn-light" id="qty-on-hand" placeholder="25" class="input">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="qty">qty :</label>
+                            <input type="text" class="form-control btn btn-light" id="qty" placeholder="2" class="input">
+                        </div>
+                    </div>
+                </div>
+                <section id="add-remove-btns">
+                    <button type="button" class="btn btn-outline-warning">Add</button>
+                    <button type="button" class="btn btn-outline-danger">Remove</button>
+                </section>
+            </form>
+        </div>
+    </section>
+    <section id="table">
+        <div class="table-responsive">
+            <table  class="table table-striped table-bordered caption-top">
+                <thead>
+                <tr>
+                    <th scope="col">Customer Id</th>
+                    <th scope="col">Item Id</th>
+                    <th scope="col">Item Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">QTY</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Order Id</th>
+                    <th scope="col">Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                </tr>
+
+            </tbody>
+            </table>
+        </div>
+    </section>
+    <section id="total" class="text-center">
+        <span class="badge text-bg-warning">Total</span>
+        <label>1000.00</label>
+    </section>
+    <div id="btn-order">
+        <button type="button" class="btn btn-warning">Place Order</button>
+    </div>
+</main>
+
+<script src="lib/jquary.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
+</body>
+</html>
