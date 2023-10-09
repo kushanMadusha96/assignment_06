@@ -1,0 +1,46 @@
+header {
+    position: sticky;
+    top: 0;
+}
+
+/*navbar*/
+nav {
+    position: relative;
+    border-bottom: 1px solid #E9B824;
+}
+.nav-link {
+    font-style: italic;
+    color: #F2BE22;
+}
+#btn-search {
+    border: 1px solid #E9B824;
+    color: #E9B824;
+}
+#btn-search:hover {
+    background-color: #E9B824;
+    color: white;
+}
+#search-input {
+    border: 1px solid #E9B824;
+}
+#home-img {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../assets/d.jpg");
+    background-position: center;
+    background-size: cover;
+    overflow-x: hidden;
+    filter: brightness(50%);
+    position: fixed;
+}
+#shop-name {
+    width: fit-content;
+    height: fit-content;
+    margin: -1px 10px 0 -10px;
+}
+#shop-name>span {
+    font-size: 25px;
+    color: #E9B824;
+    font-weight: bold;
+    font-style: italic;
+}

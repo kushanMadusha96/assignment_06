@@ -1,0 +1,77 @@
+/*table*/
+#item-table {
+    margin: 20px 30px 0 30px;
+    border: 1px solid #E9B824;
+}
+
+/*crud buttons*/
+#item-crudButtons{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+#item-crudButtons>button {
+    width: 20vw;
+    margin: 0 4px;
+    font-size: 1.2vw;
+    color: white;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #E9B824;
+    border: 2px solid #E9B824;
+}
+#item-crudButtons>button:hover {
+    background-color: white;
+    border: 2px solid #E9B824;
+    color: #E9B824;
+    font-weight: bold;
+}
+
+/*popup modal for add & update item*/
+#i-exampleModalLabel {
+    /*margin-left: 180px;*/
+    letter-spacing: 0.1vw;
+}
+#i-exampleModalLabel-update {
+    /*margin-left: 170px;*/
+    letter-spacing: 0.1vw;
+}
+#i-modal-body, #i-modal-body-update {
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+#i-modal-body>input, #i-modal-body-update>input {
+    width: 280px;
+    height: 45px;
+    border-radius: 5px;
+    background-color: #D9D9D9;
+}
+#i-modal-body>input:hover, #i-modal-body-update>input:hover {
+    background-color: whitesmoke;
+}
+#i-modal-body>label, #i-modal-body-update>label {
+    margin-top: 3px;
+}
+#i-add-btn, #i-update-btn {
+    width: 140px;
+    position: relative;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background-color: #E9B824;
+    border: 2px solid #E9B824;
+}
+#i-add-btn:hover, #i-update-btn:hover {
+    background-color: white;
+    border: 2px solid #E9B824;
+    color: #E9B824;
+
+}
+#i-modal-header, #i-modal-header-update {
+    background-color: #E9B824;
+}

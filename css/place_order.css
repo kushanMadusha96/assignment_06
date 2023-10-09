@@ -1,0 +1,76 @@
+header {
+    position: sticky;
+    top: 0;
+}
+
+/*main > select details inputs*/
+#select-order-detail {
+    border: 1px solid #E9B824;
+    margin: 3px 10px ;
+    padding: 0 0 50px 0;
+    /*position: sticky;*/
+    top: 85px;
+    background-color: white;
+
+}
+
+/*title*/
+#title {
+    background-color: #E9B824;
+    height: 50px;
+    position: relative;
+    margin-bottom: 10px;
+}
+p {
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin: auto;
+    top: 3px;
+}
+form>div>div>div>input {
+    margin-bottom: 10px;
+}
+label {
+    font-weight: bold;
+}
+
+/*add-remove-btns*/
+#add-remove-btns {
+    position: absolute;
+    right: 20px;
+}
+#table {
+    margin: 20px 10px 0 10px;
+    border: 1px solid #E9B824;
+}
+#shop-name {
+    width: fit-content;
+    height: fit-content;
+    margin: -1px 10px 0 -10px;
+}
+#shop-name>span {
+    font-size: 25px;
+    color: #E9B824;
+    font-weight: bold;
+    font-style: italic;
+}
+
+/*total label*/
+#total {
+    position: absolute;
+    right: 5vw;
+    margin-top: 15px;
+}
+#btn-order {
+    position: absolute;
+    right: 200px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+#btn-order>button:hover {
+    color: #E9B824;
+    background-color: white;
+    border: 1px solid #E9B824;
+}
+

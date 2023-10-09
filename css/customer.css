@@ -1,0 +1,88 @@
+/*table*/
+#c-table {
+    margin: 20px 30px 0 30px;
+    border: 1px solid #E9B824;
+}
+
+/*crud buttons*/
+#c-crudButtons{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+#c-crudButtons>button {
+    width: 20vw;
+    margin: 0 4px;
+    font-size: 1.2vw;
+    color: white;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #E9B824;
+    border: 2px solid #E9B824;
+}
+#c-crudButtons>button:hover {
+    background-color: white;
+    border: 2px solid #E9B824;
+    color: #E9B824;
+    font-weight: bold;
+}
+#shop-name {
+    width: fit-content;
+    height: fit-content;
+    margin: -1px 10px 0 -10px;
+}
+#shop-name>span {
+    font-size: 25px;
+    color: #E9B824;
+    font-weight: bold;
+    font-style: italic;
+}
+
+/*popup modal for add & update customer*/
+#c-exampleModalLabel {
+    /*margin-left: 180px;*/
+    letter-spacing: 0.1vw;
+}
+#c-exampleModalLabel-update {
+    /*margin-left: 170px;*/
+    letter-spacing: 0.1vw;
+}
+#c-modal-body, #c-modal-body-update {
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+#c-modal-body>input, #c-modal-body-update>input {
+    width: 300px;
+    height: 45px;
+    border-radius: 5px;
+    background-color: #D9D9D9;
+}
+#c-modal-body>input:hover, #c-modal-body-update>input:hover {
+    background-color: whitesmoke;
+}
+#c-modal-body>label, #c-modal-body-update>label {
+    margin-top: 3px;
+}
+#c-add_btn, #c-update-btn {
+    width: 140px;
+    position: relative;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background-color: #E9B824;
+    border: 2px solid #E9B824;
+}
+#c-add_btn:hover, #c-update-btn:hover {
+    background-color: white;
+    border: 2px solid #E9B824;
+    color: #E9B824;
+
+}
+#c-modal-header, #c-modal-header-update {
+    background-color: #E9B824;
+}

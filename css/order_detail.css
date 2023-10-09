@@ -1,0 +1,72 @@
+/*table*/
+#od-table {
+    margin: 20px 30px 0 30px;
+    border: 1px solid #E9B824;
+}
+
+/*crud buttons*/
+#od-crudButtons{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+#od-crudButtons>button {
+    width: 20vw;
+    margin: 0 4px;
+    font-size: 1.2vw;
+    color: white;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #E9B824;
+    border: 2px  solid #E9B824;
+}
+#od-crudButtons>button:hover {
+    background-color: white;
+    border: 2px solid #E9B824;
+    color: #E9B824;
+    font-weight: bold;
+}
+
+/*popup modal for update order detail*/
+#od-exampleModalLabel-update {
+    /*margin-left: 170px;*/
+    letter-spacing: 0.1vw;
+}
+#od-modal-body-update {
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+#od-modal-body>input, #od-modal-body-update>input {
+    width: 300px;
+    height: 45px;
+    border-radius: 5px;
+    background-color: #D9D9D9;
+}
+#od-modal-body>input:hover, #od-modal-body-update>input:hover {
+    background-color: whitesmoke;
+}
+#od-modal-body>label, #od-modal-body-update>label {
+    margin-top: 3px;
+}
+#od-update-btn {
+    width: 140px;
+    position: relative;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background-color: #E9B824;
+    border: 2px solid #E9B824;
+}
+#od-update-btn:hover {
+    background-color: white;
+    border: 2px solid #E9B824;
+    color: #E9B824;
+}
+#od-modal-header-update {
+    background-color: #E9B824;
+}

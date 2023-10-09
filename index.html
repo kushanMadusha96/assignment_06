@@ -5,135 +5,23 @@
     <title>item</title>
     <link rel="icon" type="image/x-icon" href="assets/logo.png">
     <meta name="keyword" content="html">
-    <meta name="descripotion" content="about my portfolio">
-    <meta name="author" content="il=jse" >
-    <meta http-equiv="refresh" content="100"/>
-    <meta name="viewport" content="width=device-width",initial-scale="1"/>
+    <meta name="description" content="about my portfolio">
+    <meta name="author" content="il=jse">
+    <meta http-equiv="refresh" content="100">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-
-    <style>
-        header {
-            position: sticky;
-            top: 0;
-        }
-        /*navbar*/
-        nav {
-            position: relative;
-            border-bottom: 1px solid #E9B824;
-        }
-        .nav-link {
-            font-style: italic;
-        }
-        #btn-search {
-            border: 1px solid #E9B824;
-            color: #E9B824;
-        }
-        #btn-search:hover {
-            background-color: #E9B824;
-            color: white;
-        }
-        #search-input {
-            border: 1px solid #E9B824;
-        }
-
-        /*table*/
-        #table {
-            margin: 20px 30px 0 30px;
-            border: 1px solid #E9B824;
-        }
-
-        /*crud buttons*/
-        #crudButtons{
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            padding-bottom: 10px;
-        }
-        #crudButtons>button {
-            width: 20vw;
-            margin: 0 4px;
-            font-size: 1.2vw;
-            color: white;
-            font-weight: bold;
-            font-family: 'Montserrat', sans-serif;
-            background-color: #E9B824;
-            border: 1px #E9B824;
-        }
-        #crudButtons>button:hover {
-            background-color: white;
-            border: 2px solid #E9B824;
-            color: #E9B824;
-            font-weight: bold;
-        }
-        #shop-name {
-            width: fit-content;
-            height: fit-content;
-            margin: -1px 10px 0 -10px;
-        }
-        #shop-name>span {
-            font-size: 25px;
-            color: #E9B824;
-            font-weight: bold;
-            font-style: italic;
-        }
-
-        /*popup modal for add & update item*/
-        #exampleModalLabel {
-            /*margin-left: 180px;*/
-            letter-spacing: 0.1vw;
-        }
-        #exampleModalLabel-update {
-            /*margin-left: 170px;*/
-            letter-spacing: 0.1vw;
-        }
-        #modal-body, #modal-body-update {
-            width: fit-content;
-            height: fit-content;
-            position: relative;
-            right: 0;
-            left: 0;
-            margin: auto;
-        }
-        #modal-body>input, #modal-body-update>input {
-            width: 280px;
-            height: 45px;
-            border-radius: 5px;
-            background-color: #D9D9D9;
-        }
-        #modal-body>input:hover, #modal-body-update>input:hover {
-            background-color: whitesmoke;
-        }
-        #modal-body>label, #modal-body-update>label {
-            margin-top: 3px;
-        }
-        #add_btn, #update-btn {
-            width: 140px;
-            position: relative;
-            right: 0;
-            left: 0;
-            margin: auto;
-            background-color: #E9B824;
-            border: 1px #E9B824;
-        }
-        #add_btn:hover, #update-btn:hover {
-            background-color: white;
-            border: 2px solid #E9B824;
-            color: #E9B824;
-
-        }
-        #modal-header, #modal-header-update {
-            background-color: #E9B824;
-        }
-    </style>
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/customer.css">
+    <link rel="stylesheet" href="css/item.css">
+    <link rel="stylesheet" href="css/order_detail.css">
+    <link rel="stylesheet" href="css/place_order.css">
 </head>
-
 <body>
-    <header>
+
+<!--header-->
+<header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -149,16 +37,19 @@
                         <span >GoodFood</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.html">Item</a>
+                        <a class="nav-link" aria-current="page" id="home-nav">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="customer.html">Customer</a>
+                        <a class="nav-link" id="po-nav">Place Order</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="place_order.html">Place Order</a>
+                        <a class="nav-link" id="od-nav">Order Details</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="order_detail.html">Order Details</a>
+                        <a class="nav-link" aria-current="page" id="item-nav">Item</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="customer-nav">Customer</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -168,11 +59,89 @@
             </div>
         </div>
     </nav>
-
 </header>
-    <main>
-        <section id="table">
-            <table class="table caption-top">
+
+<!--home-->
+<main>
+    <section id="home">
+        <div id="home-img"></div>
+    </section>
+<!--customer-->
+    <section id="customer">
+        <section id="c-table" >
+            <table class="table table-striped table-bordered caption-top">
+                <thead>
+                <tr>
+                    <th scope="col">Customer Id</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Contact</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="c-crudButtons" class="text-center">
+            <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">Register</button>
+            <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModalUpdate">Update</button>
+            <button type="button" class="btn btn-warning btn-lg">Unregister</button>
+            <button type="button" class="btn btn-warning btn-lg">See All</button>
+        </section>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="c-exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" id="c-modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">NEW CUSTOMER</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="c-modal-body">
+                        <label for="customer_id">customer id :</label> <br>
+                        <input type="text" id="customer_id"> <br>
+                        <label for="customer_name">customer name :</label> <br>
+                        <input type="text" id="customer_name"> <br>
+                        <label for="contact">contact :</label> <br>
+                        <input type="text" id="contact"><br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="c-add_btn">SAVE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModalUpdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" id="c-modal-header-update">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel-update">ITEM UPDATE</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="c-modal-body-update">
+                        <label for="customer-id-u">customer id :</label> <br>
+                        <input type="text" id="customer-id-u"> <br>
+                        <label for="customer-name-u">customer name :</label> <br>
+                        <input type="text" id="customer-name-u"> <br>
+                        <label for="contact-u">contact :</label> <br>
+                        <input type="text" id="contact-u"><br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="c-update-btn">UPDATE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!--item-->
+    <section id="item">
+        <section id="item-table">
+            <table class="table table-striped table-bordered caption-top">
                 <thead>
                 <tr>
                     <th scope="col">Item Id</th>
@@ -183,127 +152,54 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
                     <th scope="row">3</th>
                     <td>Larry</td>
                     <td>the Bird</td>
                     <td>@twitter</td>
                 </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-
                 </tbody>
             </table>
         </section>
 
-        <section id="crudButtons" class="text-center">
-            <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">Add</button>
-            <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModalUpdate">Update</button>
+        <section id="item-crudButtons" class="text-center">
+            <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#i-exampleModal">Add</button>
+            <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#i-exampleModalUpdate">Update</button>
             <button type="button" class="btn btn-warning btn-lg">Delete</button>
             <button type="button" class="btn btn-warning btn-lg">All</button>
         </section>
 
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="i-exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header" id="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">NEW ITEM</h1>
+                    <div class="modal-header" id="i-modal-header">
+                        <h1 class="modal-title fs-5" id="i-exampleModalLabel">NEW ITEM</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body" id="modal-body">
-                        <label for="customer_id">item id :</label> <br>
-                        <input type="text" id="customer_id"> <br>
-                        <label for="customer_name">item name :</label> <br>
-                        <input type="text" id="customer_name"> <br>
+                    <div class="modal-body" id="i-modal-body">
+                        <label for="item_id">item id :</label> <br>
+                        <input type="text" id="item_id"> <br>
+                        <label for="item-name">item name :</label> <br>
+                        <input type="text" id="item-name"> <br>
                         <label for="price">price :</label> <br>
                         <input type="text" id="price"><br>
                         <label for="qty">qty :</label> <br>
                         <input type="text" id="qty">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="add_btn">SAVE</button>
+                        <button type="button" class="btn btn-primary" id="i-add-btn">SAVE</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="exampleModalUpdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="i-exampleModalUpdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header" id="modal-header-update">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel-update">ITEM UPDATE</h1>
+                    <div class="modal-header" id="i-modal-header-update">
+                        <h1 class="modal-title fs-5" id="i-exampleModalLabel-update">ITEM UPDATE</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body" id="modal-body-update">
+                    <div class="modal-body" id="i-modal-body-update">
                         <label for="item-id-u">item id :</label> <br>
                         <input type="text" id="item-id-u"> <br>
                         <label for="item-name-u">item name :</label> <br>
@@ -314,14 +210,215 @@
                         <input type="text" id="qty-u">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="update-btn">UPDATE</button>
+                        <button type="button" class="btn btn-primary" id="i-update-btn">UPDATE</button>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
+<!--place order-->
+    <section id="po">
+        <section id="select-order-detail">
+            <div class="text-center" id="title">
+                <p class="fs-4">Select Order Details</p>
+            </div>
+            <div class="container">
+                <form>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="po-customer-id">customer id :</label>
+                                <input type="text" class="form-control btn btn-light" id="po-customer-id" placeholder="C001" class="input">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="order-id ">order id :</label>
+                                <input type="text" class="form-control btn btn-light" id="order-id " placeholder="O001" class="input">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="date">date :</label>
+                                <input type="text" class="form-control btn btn-light" id="date" placeholder="2023/08/23" class="input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="po-item-id">item id :</label>
+                                <input type="text" class="form-control btn btn-light" id="po-item-id" placeholder="I008" class="input">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="po-item-name">item name :</label>
+                                <input type="text" class="form-control btn btn-light" id="po-item-name" placeholder="rice" class="input">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="po-price">price :</label>
+                                <input type="text" class="form-control btn btn-light" id="po-price" placeholder="200.00" class="input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="qty-on-hand">qty on hand :</label>
+                                <input type="text" class="form-control btn btn-light" id="qty-on-hand" placeholder="25" class="input">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="po-qty">qty :</label>
+                                <input type="text" class="form-control btn btn-light" id="po-qty" placeholder="2" class="input">
+                            </div>
+                        </div>
+                    </div>
+                    <section id="add-remove-btns">
+                        <button type="button" class="btn btn-outline-warning">Add</button>
+                        <button type="button" class="btn btn-outline-danger">Remove</button>
+                    </section>
+                </form>
+            </div>
+        </section>
+        <section id="table">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered caption-top">
+                    <thead>
+                    <tr>
+                        <th scope="col">Customer Id</th>
+                        <th scope="col">Item Id</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">QTY</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Order Id</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section id="total" class="text-center">
+            <span class="badge text-bg-warning">Total</span>
+            <label>1000.00</label>
+        </section>
+        <div id="btn-order">
+            <button type="button" class="btn btn-warning">Place Order</button>
+        </div>
+    </section>
+<!--order details-->
+    <section id="od">
+        <section id="od-table" style="max-height: 520px; overflow-y: auto">
+            <table class="table table-striped table-bordered caption-top" >
+                <thead style="position: sticky; top: 0">
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Customer Id</th>
+                    <th scope="col">Order Id</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="od-crudButtons" class="text-center">
+            <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#od-exampleModalUpdate">Update</button>
+            <button type="button" class="btn btn-warning btn-lg">Delete Order</button>
+            <button type="button" class="btn btn-warning btn-lg">See All</button>
+        </section>
+
+        <!-- Modal -->
+        <div class="modal fade" id="od-exampleModalUpdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" id="od-modal-header-update">
+                        <h1 class="modal-title fs-5" id="od-exampleModalLabel-update">ITEM UPDATE</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="od-modal-body-update">
+                        <label for="od-date">date :</label> <br>
+                        <input type="text" id="od-date"> <br>
+                        <label for="od-customer-id">customer id :</label> <br>
+                        <input type="text" id="od-customer-id"> <br>
+                        <label for="od-order-id">order id :</label> <br>
+                        <input type="text" id="od-order-id"><br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="od-update-btn">UPDATE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script src="lib/jquary.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+        // nav bar
+        $("#customer").css("display","none");
+        $("#item").css("display","none");
+        $("#po").css("display","none");
+        $("#od").css("display","none");
+
+        $("#home-nav").on('click', () => {
+            $("#customer").css("display","none");
+            $("#item").css("display","none");
+            $("#po").css("display","none");
+            $("#od").css("display","none");
+            $("#home").css("display","block");
+        });
+        $("#customer-nav").on('click', () => {
+            $("#home").css("display","none");
+            $("#item").css("display","none");
+            $("#od").css("display","none");
+            $("#po").css("display","none");
+            $("#customer").css("display","block");
+        });
+        $("#item-nav").on('click', () => {
+            $("#home").css("display","none");
+            $("#customer").css("display","none");
+            $("#od").css("display","none");
+            $("#po").css("display","none");
+            $("#item").css("display","block");
+        });
+        $("#od-nav").on('click', () => {
+            $("#home").css("display","none");
+            $("#customer").css("display","none");
+            $("#item").css("display","none");
+            $("#po").css("display","none");
+            $("#od").css("display","block");
+        });
+        $("#po-nav").on('click', () => {
+            $("#home").css("display","none");
+            $("#customer").css("display","none");
+            $("#od").css("display","none");
+            $("#item").css("display","none");
+            $("#po").css("display","block");
+        })
+    </script>
+</main>
 </body>
 </html>
