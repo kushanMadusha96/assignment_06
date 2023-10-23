@@ -75,3 +75,6 @@
 #i-modal-header, #i-modal-header-update {
     background-color: #E9B824;
 }
+#i-exampleModal, #i-exampleModalUpdate {
+    margin-top: 75px;
+}

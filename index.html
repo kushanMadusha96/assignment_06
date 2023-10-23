@@ -7,10 +7,11 @@
     <meta name="keyword" content="html">
     <meta name="description" content="about my portfolio">
     <meta name="author" content="il=jse">
-    <meta http-equiv="refresh" content="100">
+    <meta http-equiv="refresh" content="10000">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<!--    <link rel="stylesheet" href="/lib/fontawesome/fontawesome-free-6.4.2-web/css/all.min.css">-->
 
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/customer.css">
@@ -32,7 +33,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav-ul">
                     <li class="nav-item"id="shop-name">
                         <span >GoodFood</span>
                     </li>
@@ -40,21 +41,35 @@
                         <a class="nav-link" aria-current="page" id="home-nav">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="po-nav">Place Order</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="od-nav">Order Details</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" aria-current="page" id="item-nav">Item</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="customer-nav">Customer</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="po-nav">Place Order</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="od-nav">Order Details</a>
+                    </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search-input">
-                    <button class="btn btn-outline-success" type="submit" id="btn-search">Search</button>
+
+                <form class="d-flex" role="search" onSubmit="return false" id="form">
+                    <button type="button" class="btn btn-warning" id="label-btn-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+
+                    <input type="text"  id="search-input" list="values">
+                    <datalist id="values"></datalist>
+                    <div class="btn-group" id="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" id="dropdown-btn" >
+                            Searched By
+                        </button>
+                        <ul class="dropdown-menu" id="dropdown-menu">
+                            <li class="dropdown-item">by customer</li>
+                            <li class="dropdown-item">by item</li>
+                        </ul>
+                    </div>
                 </form>
             </div>
         </div>
@@ -70,19 +85,15 @@
     <section id="customer">
         <section id="c-table" >
             <table class="table table-striped table-bordered caption-top">
-                <thead>
+                <thead >
                 <tr>
                     <th scope="col">Customer Id</th>
                     <th scope="col">Customer Name</th>
-                    <th scope="col">Contact</th>
+                    <th scope="col">NIC</th>
+                    <th scope="col">Tel</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                </tr>
+                <tbody id="c-tbl-body">
                 </tbody>
             </table>
         </section>
@@ -91,11 +102,10 @@
             <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">Register</button>
             <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModalUpdate">Update</button>
             <button type="button" class="btn btn-warning btn-lg">Unregister</button>
-            <button type="button" class="btn btn-warning btn-lg">See All</button>
         </section>
 
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="c-exampleModalLabel" aria-hidden="true">
+        <div class="modal fade"  id="exampleModal" tabindex="-1" aria-labelledby="c-exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header" id="c-modal-header">
@@ -107,6 +117,8 @@
                         <input type="text" id="customer_id"> <br>
                         <label for="customer_name">customer name :</label> <br>
                         <input type="text" id="customer_name"> <br>
+                        <label for="customer-nic">nic :</label> <br>
+                        <input type="text" id="customer-nic"> <br>
                         <label for="contact">contact :</label> <br>
                         <input type="text" id="contact"><br>
                     </div>
@@ -128,6 +140,8 @@
                         <input type="text" id="customer-id-u"> <br>
                         <label for="customer-name-u">customer name :</label> <br>
                         <input type="text" id="customer-name-u"> <br>
+                        <label for="customer-nic-u">nic :</label> <br>
+                        <input type="text" id="customer-nic-u"> <br>
                         <label for="contact-u">contact :</label> <br>
                         <input type="text" id="contact-u"><br>
                     </div>
@@ -150,13 +164,7 @@
                     <th scope="col">QTY On Hand</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                <tbody id="i-table-body">
                 </tbody>
             </table>
         </section>
@@ -165,7 +173,6 @@
             <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#i-exampleModal">Add</button>
             <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#i-exampleModalUpdate">Update</button>
             <button type="button" class="btn btn-warning btn-lg">Delete</button>
-            <button type="button" class="btn btn-warning btn-lg">All</button>
         </section>
 
         <!-- Modal -->
@@ -228,19 +235,19 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="po-customer-id">customer id :</label>
-                                <input type="text" class="form-control btn btn-light" id="po-customer-id" placeholder="C001" class="input">
+                                <input type="text" class="form-control btn btn-light" id="po-customer-id" placeholder="" class="input">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="order-id ">order id :</label>
-                                <input type="text" class="form-control btn btn-light" id="order-id " placeholder="O001" class="input">
+                                <label for="order-id">order id :</label>
+                                <input type="text" class="form-control btn btn-light" id="order-id" placeholder="" class="input">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="date">date :</label>
-                                <input type="text" class="form-control btn btn-light" id="date" placeholder="2023/08/23" class="input">
+                                <input type="text" class="form-control btn btn-light" id="date" placeholder="" class="input">
                             </div>
                         </div>
                     </div>
@@ -248,19 +255,19 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="po-item-id">item id :</label>
-                                <input type="text" class="form-control btn btn-light" id="po-item-id" placeholder="I008" class="input">
+                                <input type="text" class="form-control btn btn-light" id="po-item-id" placeholder="" class="input">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="po-item-name">item name :</label>
-                                <input type="text" class="form-control btn btn-light" id="po-item-name" placeholder="rice" class="input">
+                                <input type="text" class="form-control btn btn-light" id="po-item-name" placeholder="" class="input">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="po-price">price :</label>
-                                <input type="text" class="form-control btn btn-light" id="po-price" placeholder="200.00" class="input">
+                                <input type="text" class="form-control btn btn-light" id="po-price" placeholder="" class="input">
                             </div>
                         </div>
                     </div>
@@ -268,19 +275,20 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="qty-on-hand">qty on hand :</label>
-                                <input type="text" class="form-control btn btn-light" id="qty-on-hand" placeholder="25" class="input">
+                                <input type="text" class="form-control btn btn-light" id="qty-on-hand" placeholder="" class="input">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="po-qty">qty :</label>
-                                <input type="text" class="form-control btn btn-light" id="po-qty" placeholder="2" class="input">
+                                <input type="text" class="form-control btn btn-light" id="po-qty" placeholder="" class="input">
                             </div>
                         </div>
                     </div>
                     <section id="add-remove-btns">
-                        <button type="button" class="btn btn-outline-warning">Add</button>
-                        <button type="button" class="btn btn-outline-danger">Remove</button>
+                        <button type="button" class="btn btn-outline-warning" id="update-raw">Update</button>
+                        <button type="button" class="btn btn-outline-warning" id="add-row">Add</button>
+                        <button type="button" class="btn btn-outline-danger" id="remove-row">Remove</button>
                     </section>
                 </form>
             </div>
@@ -291,36 +299,29 @@
                     <thead>
                     <tr>
                         <th scope="col">Customer Id</th>
+                        <th scope="col">Order Id</th>
+                        <th scope="col">Date</th>
                         <th scope="col">Item Id</th>
                         <th scope="col">Item Name</th>
                         <th scope="col">Price</th>
-                        <th scope="col">QTY</th>
-                        <th scope="col">Total</th>
-                        <th scope="col">Order Id</th>
-                        <th scope="col">Date</th>
+                        <th scope="col">qty</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                    </tr>
+                    <tbody id="po-table-body">
                     </tbody>
                 </table>
             </div>
         </section>
         <section id="total" class="text-center">
             <span class="badge text-bg-warning">Total</span>
-            <label>1000.00</label>
+            <label id="total-lbl">00.00</label>
         </section>
         <div id="btn-order">
-            <button type="button" class="btn btn-warning">Place Order</button>
+            <button type="button" class="btn btn-warning" id="place-order">Place Order</button>
+        </div>
+<!--        purchase model-->
+        <div class="modal-dialog modal-dialog-centered">
+            ...
         </div>
     </section>
 <!--order details-->
@@ -332,56 +333,48 @@
                     <th scope="col">Date</th>
                     <th scope="col">Customer Id</th>
                     <th scope="col">Order Id</th>
+                    <th scope="col">Items</th>
+                    <th scope="col">Total</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                </tr>
+                <tbody id="od-table-body">
                 </tbody>
             </table>
         </section>
 
         <section id="od-crudButtons" class="text-center">
-            <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#od-exampleModalUpdate">Update</button>
             <button type="button" class="btn btn-warning btn-lg">Delete Order</button>
-            <button type="button" class="btn btn-warning btn-lg">See All</button>
         </section>
-
-        <!-- Modal -->
-        <div class="modal fade" id="od-exampleModalUpdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header" id="od-modal-header-update">
-                        <h1 class="modal-title fs-5" id="od-exampleModalLabel-update">ITEM UPDATE</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body" id="od-modal-body-update">
-                        <label for="od-date">date :</label> <br>
-                        <input type="text" id="od-date"> <br>
-                        <label for="od-customer-id">customer id :</label> <br>
-                        <input type="text" id="od-customer-id"> <br>
-                        <label for="od-order-id">order id :</label> <br>
-                        <input type="text" id="od-order-id"><br>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="od-update-btn">UPDATE</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
+<!--    install dependencies-->
     <script src="lib/jquary.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="lib/fontawesome/fontawesome-free-6.4.2-web/js/all.min.js"></script>
+
+<!--    controllers-->
+    <script src="controller/CustomerController.js" type="module"></script>
+    <script src="controller/ItemController.js" type="module"></script>
+    <script src="controller/PlaceOrder.js" type="module"></script>
+    <script src="controller/OrderDetailController.js" type="module"></script>
+
     <script>
+        $(document).ready(function() {
+            $("#nav-ul").click(function() {
+                $('#search-input').val('');
+            });
+        });
         // nav bar
         $("#customer").css("display","none");
         $("#item").css("display","none");
         $("#po").css("display","none");
         $("#od").css("display","none");
+
+        $("#dropdown").css("display","none");
+        $("#home-nav").css("font-weight","bold");
+        $("#search-input").css("display", "none");
+        $("#label-btn-search ").css("display","none");
 
         $("#home-nav").on('click', () => {
             $("#customer").css("display","none");
@@ -389,34 +382,95 @@
             $("#po").css("display","none");
             $("#od").css("display","none");
             $("#home").css("display","block");
+
+            $("#dropdown").css("display","none");
+            $("#label-btn-search ").css("display","none");
+            $("#search-input").css("display", "none");
+
+
+            $("#home-nav").css("font-weight","bold");
+            $("#customer-nav").css("font-weight","normal");
+            $("#item-nav").css("font-weight","normal");
+            $("#po-nav").css("font-weight","normal");
+            $("#od-nav").css("font-weight","normal");
         });
+
         $("#customer-nav").on('click', () => {
             $("#home").css("display","none");
             $("#item").css("display","none");
             $("#od").css("display","none");
             $("#po").css("display","none");
             $("#customer").css("display","block");
+
+            $("#dropdown").css("display","none");
+            $("#label-btn-search ").css("display","block");
+            $("#search-input").css("display", "block");
+            $("#search-input").attr("placeholder", " Enter id or name");
+
+            $("#home-nav").css("font-weight","normal");
+            $("#customer-nav").css("font-weight","bold");
+            $("#item-nav").css("font-weight","normal");
+            $("#po-nav").css("font-weight","normal");
+            $("#od-nav").css("font-weight","normal");
         });
+
         $("#item-nav").on('click', () => {
             $("#home").css("display","none");
             $("#customer").css("display","none");
             $("#od").css("display","none");
             $("#po").css("display","none");
             $("#item").css("display","block");
+
+            $("#dropdown").css("display","none");
+            $("#label-btn-search ").css("display","block");
+            $("#search-input").css("display", "block");
+            $("#search-input").attr("placeholder", " Enter id or name");
+
+            $("#home-nav").css("font-weight","normal");
+            $("#customer-nav").css("font-weight","normal");
+            $("#item-nav").css("font-weight","bold");
+            $("#po-nav").css("font-weight","normal");
+            $("#od-nav").css("font-weight","normal");
         });
+
         $("#od-nav").on('click', () => {
             $("#home").css("display","none");
             $("#customer").css("display","none");
             $("#item").css("display","none");
             $("#po").css("display","none");
             $("#od").css("display","block");
+
+            $("#dropdown").css("display","none");
+            $("#label-btn-search ").css("display","block");
+            $("#search-input").css("display", "block");
+            $("#search-input").attr("placeholder", " Enter any id or date");
+
+            $("#home-nav").css("font-weight","normal");
+            $("#customer-nav").css("font-weight","normal");
+            $("#item-nav").css("font-weight","normal");
+            $("#po-nav").css("font-weight","normal");
+            $("#od-nav").css("font-weight","bold");
         });
+
         $("#po-nav").on('click', () => {
             $("#home").css("display","none");
             $("#customer").css("display","none");
             $("#od").css("display","none");
             $("#item").css("display","none");
             $("#po").css("display","block");
+
+            $("#dropdown").css("display","block");
+            $("#label-btn-search ").css("display","none");
+            $("#search-input").css("display", "block");
+            $("#search-input").attr("placeholder", " Search");
+
+
+            $("#home-nav").css("font-weight","normal");
+            $("#customer-nav").css("font-weight","normal");
+            $("#item-nav").css("font-weight","normal");
+            $("#po-nav").css("font-weight","bold");
+            $("#od-nav").css("font-weight","normal");
+
         })
     </script>
 </main>

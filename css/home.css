@@ -1,8 +1,8 @@
 header {
     position: sticky;
     top: 0;
+    z-index: 500;
 }
-
 /*navbar*/
 nav {
     position: relative;
@@ -12,16 +12,41 @@ nav {
     font-style: italic;
     color: #F2BE22;
 }
-#btn-search {
-    border: 1px solid #E9B824;
-    color: #E9B824;
+
+.nav-link:hover {
+    color: #F2BE22;
+    font-weight: bold;
 }
-#btn-search:hover {
-    background-color: #E9B824;
+
+#label-btn-search {
+    margin-right: 3px;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+#dropdown {
+    margin-right: 3px;
+}
+#dropdown2 {
+    margin-right: 3px;
+}
+#dropdown>button {
+    background-color: #F9BE22;
+    border: 1px solid #E9B824;
     color: white;
 }
+
 #search-input {
     border: 1px solid #E9B824;
+    color: #F2BE22;
+    border-radius: 5px;
+    margin-right: 4px;
+}
+#search-input::placeholder {
+    color: #F2BE22;
+}
+#search-input:focus {
+    border-color: #E9B824;
 }
 #home-img {
     width: 100vw;

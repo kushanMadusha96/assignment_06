@@ -86,3 +86,7 @@
 #c-modal-header, #c-modal-header-update {
     background-color: #E9B824;
 }
+
+#exampleModal, #exampleModalUpdate {
+    margin-top: 75px;
+}
