@@ -1,10 +1,15 @@
-import {customer_db} from "../controller/CustomerController.js";
-import {item_db} from "./ItemController.js";
-const db = [];
-export const order_detail_db = [];
+import {order_detail_db} from "../db/order_detail_db.js";
+import {item_db} from "../db/item_db.js";
+import {customer_db} from "../db/customer_db.js";
+import {order_raw_db} from "../db/order_raw_db.js";
+import {OrderDetail} from "../model/OrderDetailModel.js";
 
 //regex patterns
 const quantityPattern = /^\d+$/;
+
+generateNextOrderId();
+// check_table();
+setInterval(check_table, 1000);
 
 //error alert
 function showError(message) {
@@ -27,6 +32,8 @@ $(document).ready(function () {
         $("#po-item-name").prop("readonly", true);
         $("#po-price").prop("readonly", true);
         $("#qty-on-hand").prop("readonly", true);
+        $("#p-total").prop("readonly", true);
+        $("#balance").prop("readonly", true);
     }
     updateDateTime();
     setInterval(updateDateTime, 1000);
@@ -49,7 +56,7 @@ class OrderRaw {
 function loadAll() {
         let total = 0.0;
         $("#po-table-body").empty();
-        db.map((item, index) => {
+        order_raw_db.map((item, index) => {
             $("#po-table-body").append(`<tr><td class="customer-id">${item.customer_id}</td><td class="order-id">${item.order_id}</td><td class="date">${item.date}</td><td class="item-id">${item.item_id}</td><td class="item-name">${item.item_name}</td><td class="price">${item.price}</td><td class="qty">${item.qty}</td></tr>`);
             $("#total-lbl").text(total = parseFloat(total) + (parseFloat(item.price) * parseFloat(item.qty)));
         });
@@ -100,6 +107,7 @@ $("#po-qty").on('input', function () {
 //add new order raw
 let buying_item_id;
 let buying_qty;
+
 $("#add-row").on('click', () => {
     if(!$("#po-customer-id").val() ||  !$("#order-id").val() || !$("#date").val() || !$("#po-item-id").val() || !$("#po-item-name").val() ||  !$("#po-price").val() ||  !$("#po-qty").val()) {
         showError("Fill input correctly!");
@@ -119,7 +127,7 @@ $("#add-row").on('click', () => {
 
     let isBuying = isAlreadyBuying($("#po-item-name").val(),  $("#po-qty").val());
     if (!isBuying) {
-        db.push(new OrderRaw(
+        order_raw_db.push(new OrderRaw(
             $("#po-customer-id").val(),
             $("#order-id").val(),
             $("#date").val(),
@@ -145,9 +153,9 @@ function reduce_item_count() {
 
 //add item for all ready buying item
 function isAlreadyBuying(item_name, new_qty) {
-    for(let i = 0; i < db.length; i++ ){
-        if(db[i].item_name === item_name) {
-            db[i].qty = parseInt(db[i].qty) + (parseInt(new_qty));
+    for(let i = 0; i < order_raw_db.length; i++ ){
+        if(order_raw_db[i].item_name === item_name) {
+            order_raw_db[i].qty = parseInt(order_raw_db[i].qty) + (parseInt(new_qty));
             return true;
         }
     }
@@ -156,6 +164,8 @@ function isAlreadyBuying(item_name, new_qty) {
 
 //click raw to inputs
 let item_id;
+let qty;
+let total;
 $("#po-table-body").on("click", ("tr"), function () {
     $("#po-customer-id").val($(this).find(".customer-id").text());
     $("#order-id").val($(this).find(".order-id").text());
@@ -166,6 +176,9 @@ $("#po-table-body").on("click", ("tr"), function () {
     $("#po-qty").val($(this).find(".qty").text());
     $("#qty-on-hand").val($(this).find(".qty").text())
     item_id = $(this).find(".item-id").text();
+    qty = $(this).find(".qty").text();
+    total = $("#total-lbl").text();
+
 });
 
 // update raw data
@@ -190,7 +203,7 @@ $("#update-raw").on('click', async () => {
         showError("Invalid quantity, Enter only whole numbers");
         return;
     }
-    db[db.findIndex(item => item.item_id === item_id)] = new OrderRaw(
+    order_raw_db[order_raw_db.findIndex(item => item.item_id === item_id)] = new OrderRaw(
             $("#po-customer-id").val(),
             $("#order-id").val(),
             $("#date").val(),
@@ -212,7 +225,11 @@ $("#update-raw").on('click', async () => {
 
 //remove item raw
 $("#remove-row").on('click', () => {
-    db.splice(db.findIndex(item => item.item_id === item_id), 1);
+    order_raw_db.splice(order_raw_db.findIndex(item => item.item_id === item_id), 1);
+
+    let index = item_db.findIndex(item => item.item_id === item_id);
+    item_db[index].qty = parseInt(item_db[index].qty) + parseInt(qty);
+    $("#total-lbl").text(parseFloat($("#total-lbl").text()) - (parseFloat(item_db[index].price) * parseInt(buying_qty)));
     loadAll()
     clearInputs();
 });
@@ -220,21 +237,21 @@ $("#remove-row").on('click', () => {
 // order details for table (save order details)
 const items = [];
 
-class OrderDetail {
-    constructor(date, customer_id, order_id, items, total) {
-        this.date = date;
-        this.customer_id = customer_id;
-        this.order_id = order_id;
-        this.items = items;
-        this.total = total;
-    }
-}
 $("#place-order").on('click', async () => {
+    console.log("cash :"+ $("#cash").val() + "total :" + $("#p-total").val);
+    if(parseFloat($("#p-total").val()) > parseFloat($("#cash").val())) {
+        showError("not enough money for order...");
+        return;
+    }
+    if(!$("#balance").val()) {
+        showError("please show balance before purchase...");
+        return;
+    }
     $("#po-table-body tr").each(function() {
             items.push($(this).find(".item-name").text());
     });
 
-    order_detail_db.push(new OrderDetail($("#date").val(), $("#po-customer-id").val(), $("#order-id").val(), items.join(","), $("#total-lbl").text()));
+    order_detail_db.push(new OrderDetail($("#date").val(), $("#po-customer-id").val(), $("#order-id").val(), items.join(","), $("#p-total").val()));
 
    load_all_order_details();
 
@@ -247,13 +264,21 @@ $("#place-order").on('click', async () => {
     });
     await $("#po-table-body").empty();
     items.length = 0;
-    db.length = 0;
-    $("#po-customer-id").val("");
+    order_raw_db.length = 0;
     await generateNextOrderId();
-    clearInputs();
-    $("#po-customer-id").val("");
+    clear_inputs_after_order();
 });
 
+//clear inputs after place order
+function clear_inputs_after_order() {
+    clearInputs()
+    $("#po-customer-id").val("");
+    $("#total-lbl").text("");
+    $("#p-total").val("");
+    $("#discount").val("");
+    $("#cash").val("");
+    $("#balance").val("");
+}
 //load all order details
 function load_all_order_details() {
     $("#od-table-body").empty();
@@ -270,6 +295,7 @@ $(document).ready(function() {
         $("#dropdown-btn").text(selectedValue);
 
         $('#search-input').val('');
+        $("#values").empty();
 
         if(selectedValue === "by customer") {
             customer_db.map((item, index) => {
@@ -290,17 +316,28 @@ $("#search-input").on("keypress", function (e) {
     if(key == 13) {
         if(selectedValue === "by customer") {
             if ($("#po-table-body tr").length === 0) {
-                $("#po-customer-id").val(customer_db[customer_db.findIndex((item) => item.nic === $("#search-input").val())].customer_id);
+                let cus_index = customer_db.findIndex((item) => item.nic === $("#search-input").val());
+                     if (!cus_index) {
+                         $("#po-customer-id").val(customer_db[cus_index].customer_id);
+                     }else {
+                         showError("no found customer...");
+                     }
             }else {
                 showError("please finish current order before make new order");
+                return;
             }
         }else {
             if(selectedValue === "by item") {
                 let selected_item_index = item_db.findIndex((item) => item.item_name === $("#search-input").val());
-                $("#po-item-id").val(item_db[selected_item_index].item_id);
-                $("#po-item-name").val(item_db[selected_item_index].item_name);
-                $("#po-price").val(item_db[selected_item_index].price);
-                $("#qty-on-hand").val(item_db[selected_item_index].qty);
+                    if (!selected_item_index) {
+                        $("#po-item-id").val(item_db[selected_item_index].item_id);
+                        $("#po-item-name").val(item_db[selected_item_index].item_name);
+                        $("#po-price").val(item_db[selected_item_index].price);
+                        $("#qty-on-hand").val(item_db[selected_item_index].qty);
+                    }
+                    else {
+                        showError("no found item...");
+                }
             }
         }
     }
@@ -310,4 +347,53 @@ $("#search-input").on("keypress", function (e) {
 function generateNextOrderId() {
     $("#order-id").val("O00"+(order_detail_db.length + 1));
 }
-generateNextOrderId();
+
+//check table when click purchase order button
+// $("#purchase-order-btn").on('click', () => {
+//     if ($("#po-table-body tr").length === 0) {
+//         showError("please buy item before purchase...")
+//         return;
+    // }else {
+    //     $("#purchase-model").modal('show');
+    // }
+// });
+
+//check if table is none
+function check_table() {
+    if ($("#po-table-body tr").length === 0) {
+        $("#purchase-order-btn").prop("disabled",true);
+    }else{
+        $("#purchase-order-btn").prop("disabled",false);
+    }
+}
+
+//total set to total in purchase model
+$("#purchase-order-btn").on('click', () => {
+    $("#p-total").val($("#total-lbl").text());
+});
+
+//calculate total & balance after discount
+$("#discount").on("keypress", async function (e) {
+    let key = e.which;
+    if(key == 13) {
+        await $("#p-total").val($("#p-total").val() - ($("#p-total").val() / 100) * $("#discount").val());
+        await $("#balance").val($("#cash").val() - $("#p-total").val());
+    }
+});
+
+//calculate balance
+$("#cash").on("keypress", async function (e) {
+    let key = e.which;
+    if(key == 13) {
+        await $("#balance").val($("#cash").val() - $("#p-total").val());
+    }
+});
+
+//check cash value is legal
+$("#cash").on('input',function () {
+    if(parseFloat($("#p-total").val()) > parseFloat($("#cash").val())) {
+        $("#cash").css("border","2px solid red");
+    }else {
+        $("#cash").css("border","none");
+    }
+})

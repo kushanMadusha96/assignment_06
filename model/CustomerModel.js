@@ -5,5 +5,5 @@ export class CustomerModel {
         this.customer_name = customer_name;
         this.nic = nic;
         this.contact = contact;
-    };
+    }
 }

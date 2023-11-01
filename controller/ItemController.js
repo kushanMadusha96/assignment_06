@@ -1,14 +1,5 @@
-export const item_db = [];
-
-//item model
-class ItemModel {
-    constructor(item_id, item_name, price, qty) {
-        this.item_id = item_id;
-        this.item_name = item_name;
-        this.price = price;
-        this.qty = qty;
-    }
-}
+import {ItemModel} from "../model/ItemModel.js";
+import {item_db} from "../db/item_db.js";
 
 //item id make read only
 $(document).ready(function () {
@@ -53,6 +44,7 @@ function showError(message) {
     });
 }
 
+// validation patterns
 const namePattern = /^[A-Za-z\s\-']+$/;
 const nameLengthPattern = /^[A-Za-z\s\-']{3,15}$/;
 const pricePattern = /^\d+(\.\d{2})?$/;

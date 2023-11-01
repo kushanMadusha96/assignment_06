@@ -1,6 +1,6 @@
 // customer db
 import {CustomerModel} from "../model/CustomerModel.js";
-export const customer_db = [];
+import {customer_db} from "../db/customer_db.js";
 
 //customer id make read only
 $(document).ready(function () {
@@ -42,7 +42,8 @@ function loadAll() {
 const namePattern = /^[A-Za-z\s\-']+$/;
 const nameLengthPattern = /^[A-Za-z\s\-']{3,20}$/;
 const nicPattern = /^\d{12}(v)?$/;
-const phoneNumberPattern = /^(?:\+1)?\d{10}$/;
+const phoneNumberPattern = /^(07[0125678]\d{7})$/;
+// /^(?:\+1)?\d{10}$/;
 
 //error alert
 function showError(message) {
@@ -76,6 +77,10 @@ $("#c-add_btn").on('click', async () => {
 
     if (!nicPattern.test(customerNic)) {
         showError("Enter a valid NIC number (e.g., 200224000741 or 200224000741v).");
+        return;
+    }
+    if(-1  <  customer_db.findIndex(item => item.nic === $("#customer-nic").val())) {
+        showError("this nic all ready exit...");
         return;
     }
 

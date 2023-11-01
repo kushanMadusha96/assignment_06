@@ -51,12 +51,9 @@ nav {
 #home-img {
     width: 100vw;
     height: 100vh;
-    background-image: url("../assets/d.jpg");
+    background-image: url("../assets/c.jpg");
     background-position: center;
     background-size: cover;
-    overflow-x: hidden;
-    filter: brightness(50%);
-    position: fixed;
 }
 #shop-name {
     width: fit-content;
@@ -68,4 +65,41 @@ nav {
     color: #E9B824;
     font-weight: bold;
     font-style: italic;
+}
+#galley {
+    width: 700px;
+    height: 500px;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    filter: brightness(95%);
+    animation: gallery 10s infinite;
+}
+#home {
+    position: fixed;
+}
+
+@keyframes gallery {
+    0%,20% {
+        background-image: url("../assets/a.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+    25%,45% {
+        background-image: url("../assets/b.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+    50%,70% {
+        background-image: url("../assets/d.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+    75%,100% {
+        background-image: url("../assets/e.jpg");
+        background-position: center;
+        background-size: cover;
+    }
 }
